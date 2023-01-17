@@ -19,7 +19,7 @@ public class ThermometreTest {
         int[] temperatures = new int[1];
 
         int resultat = thermometre.getTemperatureLaPlusProcheDeZero(temperatures);
-        assertTrue(resultat == 0);
+        assertEquals(0, resultat);
     }
 
     @Test
@@ -29,7 +29,6 @@ public class ThermometreTest {
         for(int i = 1;i <= 10001; i++) {
             temperatures[i - 1] = i;
         }
-
 
         Exception exception = assertThrows(IllegalArgumentException.class, () -> thermometre.getTemperatureLaPlusProcheDeZero(temperatures));
         assertEquals(IllegalArgumentException.class, exception.getClass());
