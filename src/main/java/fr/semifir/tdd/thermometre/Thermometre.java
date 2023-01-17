@@ -9,12 +9,10 @@ public class Thermometre {
         }
 
         for (int temperature : temperatures) {
-            if (temperature > 0) {
-                if (temperature < plusProcheDeZero) {
-                    plusProcheDeZero = temperature;
-                }
-            } else {
-                if (temperature > plusProcheDeZero) {
+            if (Math.abs(temperature) < Math.abs(plusProcheDeZero)) {
+                plusProcheDeZero = temperature;
+            } else if (Math.abs(temperature) == Math.abs(plusProcheDeZero)) {
+                if (temperature > 0) {
                     plusProcheDeZero = temperature;
                 }
             }

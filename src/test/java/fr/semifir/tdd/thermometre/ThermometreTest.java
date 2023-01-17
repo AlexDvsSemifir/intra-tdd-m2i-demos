@@ -8,7 +8,6 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ThermometreTest {
 
     Thermometre thermometre;
-    int[] temperatures = new int[3];
 
     @BeforeEach
     void setUp() {
@@ -17,6 +16,7 @@ public class ThermometreTest {
 
     @Test
     void doitRetournerZeroSiVide() {
+        int[] temperatures = new int[1];
 
         int resultat = thermometre.getTemperatureLaPlusProcheDeZero(temperatures);
         assertTrue(resultat == 0);
@@ -37,6 +37,7 @@ public class ThermometreTest {
 
     @Test
     void doitRetournerNombrePositifLePlusProcheDeZero() {
+        int[] temperatures = new int[3];
         temperatures[0] = 4;
         temperatures[1] = 2;
         temperatures[2] = 5;
@@ -47,11 +48,22 @@ public class ThermometreTest {
 
     @Test
     void doitRetournerNombreNegatifPlusProcheDeZero() {
+        int[] temperatures = new int[3];
         temperatures[0] = -4;
         temperatures[1] = -2;
         temperatures[2] = -5;
 
         int resultat = thermometre.getTemperatureLaPlusProcheDeZero(temperatures);
         assertEquals(-2, resultat);
+    }
+
+    @Test
+    void doitRetournerLaValeurPositiveSiLaDistanceEstIdentique() {
+        int[] temperatures = new int[2];
+        temperatures[0] = -1;
+        temperatures[1] = 1;
+
+        int resultat = thermometre.getTemperatureLaPlusProcheDeZero(temperatures);
+        assertEquals(1, resultat);
     }
 }
